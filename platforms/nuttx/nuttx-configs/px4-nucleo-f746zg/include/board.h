@@ -454,7 +454,7 @@
 #define GPIO_USART6_RTS  GPIO_USART6_RTS_2  /* PG8  */
 #define GPIO_USART6_CTS  GPIO_USART6_CTS_2  /* PG15 */
 
-#define GPIO_UART7_RX    GPIO_UART7_RX_2    /* PF6 */
+#define GPIO_UART7_RX    GPIO_UART7_RX_1    /* PE7 */
 #define GPIO_UART7_TX    GPIO_UART7_TX_1    /* PE8 */
 
 //#define GPIO_USART1_RX   GPIO_USART1_RX_2    /* PB7 */
