@@ -3,7 +3,7 @@ set(BOARD px4-nucleo-f746zg CACHE string "" FORCE)
 
 px4_nuttx_configure(HWCLASS m7 CONFIG nsh ROMFS y ROMFSROOT px4fmu_common)
 
-set(config_uavcan_num_ifaces 2)
+#set(config_uavcan_num_ifaces 2)
 
 set(config_module_list
 #	#
@@ -37,7 +37,7 @@ set(config_module_list
 #	#drivers/rgbled_pwm
 	drivers/stm32
 	drivers/stm32/adc
-	drivers/stm32/tone_alarm
+#	drivers/stm32/tone_alarm
 #	drivers/tap_esc
 #	drivers/vmount
 #	modules/sensors
@@ -46,21 +46,21 @@ set(config_module_list
 #	# System commands
 #	#
 #	systemcmds/bl_update
-	systemcmds/config
+#	systemcmds/config
 #	systemcmds/dumpfile
 #	systemcmds/esc_calib
 #	systemcmds/hardfault_log
-	systemcmds/led_control
+#	systemcmds/led_control
 #	systemcmds/mixer
 #	systemcmds/motor_ramp
 #	systemcmds/mtd
-	systemcmds/nshterm
+#	systemcmds/nshterm
 #	systemcmds/param
 #	systemcmds/perf
 #	systemcmds/pwm
 #	systemcmds/reboot
 #	systemcmds/sd_bench
-	systemcmds/top
+#	systemcmds/top
 #	systemcmds/topic_listener
 #	systemcmds/tune_control
 #	systemcmds/ver
@@ -143,7 +143,7 @@ set(config_module_list
 #
 #	# Tutorial code from
 #	# https://px4.io/dev/px4_simple_app
-#	examples/px4_simple_app
+	examples/px4_simple_app
 #
 #	# Tutorial code from
 #	# https://px4.io/dev/debug_values
