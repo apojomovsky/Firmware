@@ -1,6 +1,8 @@
 
 set(BOARD px4-nucleo-f746zg CACHE string "" FORCE)
 
+add_definitions(-DPARAM_NO_ORB)
+
 px4_nuttx_configure(HWCLASS m7 CONFIG nsh ROMFS y ROMFSROOT px4fmu_common)
 
 #set(config_uavcan_num_ifaces 2)
@@ -54,7 +56,7 @@ set(config_module_list
 #	systemcmds/mixer
 #	systemcmds/motor_ramp
 #	systemcmds/mtd
-#	systemcmds/nshterm
+	systemcmds/nshterm
 #	systemcmds/param
 #	systemcmds/perf
 #	systemcmds/pwm
@@ -154,5 +156,5 @@ set(config_module_list
 #	#examples/fixedwing_control
 #
 #	# Hardware test
-examples/hwtest
+#   examples/hwtest
 )
