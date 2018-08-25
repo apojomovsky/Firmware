@@ -1,7 +1,7 @@
 
 set(BOARD px4-nucleo-f746zg CACHE string "" FORCE)
 
-add_definitions(-DPARAM_NO_ORB)
+#add_definitions(-DPARAM_NO_ORB)
 
 px4_nuttx_configure(HWCLASS m7 CONFIG nsh ROMFS y ROMFSROOT px4fmu_common)
 
@@ -26,7 +26,7 @@ set(config_module_list
 #	drivers/gps
 #	drivers/irlock
 #	drivers/mkblctrl
-#	drivers/imu/mpu6000
+	drivers/imu/mpu6000
 #	drivers/imu/mpu9250
 #	drivers/oreoled
 #	drivers/pwm_input
@@ -146,6 +146,7 @@ set(config_module_list
 #	# Tutorial code from
 #	# https://px4.io/dev/px4_simple_app
 	examples/px4_simple_app
+#	examples/rosserial_app
 #
 #	# Tutorial code from
 #	# https://px4.io/dev/debug_values

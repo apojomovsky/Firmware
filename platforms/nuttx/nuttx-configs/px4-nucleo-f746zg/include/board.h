@@ -63,12 +63,12 @@
  *   HSE: 16 MHz crystal for HSE
  */
 
-#define STM32_BOARD_XTAL        16000000ul
+#define STM32_BOARD_XTAL        8000000ul
 
 #define STM32_HSI_FREQUENCY     16000000ul
 #define STM32_LSI_FREQUENCY     32000
 #define STM32_HSE_FREQUENCY     STM32_BOARD_XTAL
-#define STM32_LSE_FREQUENCY     0
+#define STM32_LSE_FREQUENCY     32768
 
 /* Main PLL Configuration.
  *
@@ -454,6 +454,13 @@
 
 //#define GPIO_UART7_RX    GPIO_UART7_RX_1    /* PE7 */
 //#define GPIO_UART7_TX    GPIO_UART7_TX_1    /* PE8 */
+
+/* USART8: has no remap
+ *
+ *      GPIO_UART8_RX                          PE0[CN12-64]
+ *      GPIO_UART8_TX                          PE1[CN11-61]
+ */
+
 
 //#define GPIO_USART1_RX   GPIO_USART1_RX_2    /* PB7 */
 //#define GPIO_USART1_TX   GPIO_USART1_TX_2    /* PB6 */
