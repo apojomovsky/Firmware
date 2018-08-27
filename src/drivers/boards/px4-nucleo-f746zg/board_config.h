@@ -68,6 +68,9 @@
 #define PX4IO_SERIAL_CLOCK      STM32_PCLK1_FREQUENCY
 #define PX4IO_SERIAL_BITRATE    1500000			/* 1.5Mbps -> max rate for IO */
 
+//#define  FLASH_BASED_PARAMS
+
+
 /* Configuration ************************************************************************************/
 
 /* Un-comment to support some RC00 polarities inversions
@@ -76,7 +79,7 @@
 //#define PX4_FMUV5_RC00
 
 #define PX4_FMUV5_RC01
-#define BOARD_HAS_LTC4417
+//#define BOARD_HAS_LTC4417
 
 #if defined(BOARD_HAS_LTC4417)
 #  define BOARD_HAS_LTC44XX_VALIDS      2 // No LTC or N Bricks
@@ -226,9 +229,9 @@
 
 /* I2C busses */
 
-#define PX4_I2C_BUS_EXPANSION	1
+#define PX4_I2C_BUS_EXPANSION	3
 #define PX4_I2C_BUS_EXPANSION1	2
-#define PX4_I2C_BUS_ONBOARD		3
+#define PX4_I2C_BUS_ONBOARD		1
 #define PX4_I2C_BUS_EXPANSION2	4
 #define PX4_I2C_BUS_LED			PX4_I2C_BUS_EXPANSION
 
@@ -521,7 +524,7 @@
 
 #define RC_UXART_BASE        STM32_USART6_BASE /* NOT FMUv5 test HW ONLY*/
 
-#define GPS_DEFAULT_UART_PORT "/dev/ttyS0" /* UART1 on FMUv5 */
+//#define GPS_DEFAULT_UART_PORT "/dev/ttyS0" /* UART1 on FMUv5 */
 
 /* Input Capture Channels. */
 #define INPUT_CAP1_TIMER          		  2
@@ -592,7 +595,7 @@
 #  warning SDIO initialization cannot be perfomed on the IDLE thread
 #endif
 
-#define	BOARD_NAME "PX4FMU_V5"
+#define	BOARD_NAME "NUCLEO_F746ZG"
 
 /* By Providing BOARD_ADC_USB_CONNECTED (using the px4_arch abstraction)
  * this board support the ADC system_power interface, and therefore
@@ -691,6 +694,16 @@
 #define GPIO_SD_CARD_POWER_EN       (1<<19)  /**< PG7  - GPIO_VDD_3V3_SD_CARD_EN */
 #define GPIO_HW_REV_DRIVE_EN        (1<<20)  /**< PH14 - GPIO_HW_REV_DRIVE */
 #define GPIO_HW_VER_DRIVE_EN        (1<<21)  /**< PG0  - GPIO_HW_VER_DRIVE */
+
+/*
+ * The slave address of the MPU-60X0 is b110100X which is 7 bits long.
+ * The LSB bit of the 7 bit address is determined by the logic level
+ * on pin AD0. This allows two MPU-60X0s to be connected to the same I2C bus.
+ * When used in this configuration, the address of the one of the devices
+ * should be b1101000 (pin AD0 is logic low) and the address of the other
+ * should be b1101001 (pin AD0 is logic high).
+ */
+#define PX4_I2C_MPU6050_ADDR 0x68
 
 /* This board provides a DMA pool and APIs */
 

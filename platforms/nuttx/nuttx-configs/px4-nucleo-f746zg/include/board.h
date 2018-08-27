@@ -623,15 +623,15 @@
 
 /* SDMMC1
  *
- *      VDD 3.3
- *      GND
- *      SDMMC1_CK                           PC12
- *      SDMMC1_CMD                          PD2
- *      SDMMC1_D0                           PC8
- *      SDMMC1_D1                           PC9
- *      SDMMC1_D2                           PC10
- *      SDMMC1_D3                           PC11
- *      GPIO_SDMMC1_NCD                     PG0
+ *   4    VDD 3.3
+ *   3/6  GND
+ *   5    SDMMC1_CK                           PC12
+ *   2    SDMMC1_CMD                          PD2
+ *   7    SDMMC1_D0                           PC8
+ *   8    SDMMC1_D1                           PC9
+ *   9    SDMMC1_D2                           PC10
+ *   1    SDMMC1_D3                           PC11
+ *   -    GPIO_SDMMC1_NCD                     PG0
  */
 
 /* USB

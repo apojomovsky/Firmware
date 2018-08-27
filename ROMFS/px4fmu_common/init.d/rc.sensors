@@ -259,6 +259,7 @@ then
 
 fi
 
+
 if ver hwcmp AEROFC_V1
 then
 	ms5611 -T 0 start

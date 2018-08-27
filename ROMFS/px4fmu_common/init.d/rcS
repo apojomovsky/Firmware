@@ -30,16 +30,16 @@ set IO_FILE                     ""
 set IO_PRESENT                  no
 set LOG_FILE                    /fs/microsd/bootlog.txt
 set LOGGER_BUF                  14
-set MAVLINK_F                   default
-set MAVLINK_COMPANION_DEVICE    /dev/ttyS2
-set MAV_TYPE                    none
-set MIXER                       none
-set MIXER_AUX                   none
+#set MAVLINK_F                   default
+#set MAVLINK_COMPANION_DEVICE    /dev/ttyS2
+#set MAV_TYPE                    none
+#set MIXER                       none
+#set MIXER_AUX                   none
 set MK_MODE                     none
 set MKBLCTRL_ARG                ""
 set MODE                        autostart
 set OUTPUT_MODE                 none
-set PARAM_FILE                  /fs/microsd/params
+#set PARAM_FILE                  /fs/microsd/params
 set PWM_OUT                     none
 set PWM_RATE                    p:PWM_RATE
 set PWM_DISARMED                p:PWM_DISARMED
@@ -55,6 +55,21 @@ set TUNE_ERR                    "ML<<CP4CP4CP4CP4CP4"
 set USE_IO                      no
 set VEHICLE_TYPE                none
 
+mount -t procfs /proc
+sercon
+ver all
+mount -t vfat /dev/mmcsd0 /fs/microsd
+set LOGGER_BUF 64
+uorb start
+#param set IMU_GYRO_CUTOFF       100
+#param set IMU_ACCEL_CUTOFF      30
+#mpu6000 -I -T 6000 start
+
+#if mtd start
+#then
+#	set PARAM_FILE /fs/mtd_params
+#fi
+
 ##
 ## Mount the procfs.
 ##
@@ -69,9 +84,9 @@ set VEHICLE_TYPE                none
 #ver all
 #
 ##
-## Try to mount the microSD card.
-##
-## REBOOTWORK this needs to start after the flight control loop
+# Try to mount the microSD card.
+#
+# REBOOTWORK this needs to start after the flight control loop
 #if mount -t vfat /dev/mmcsd0 /fs/microsd
 #then
 #	if hardfault_log check
@@ -99,7 +114,7 @@ set VEHICLE_TYPE                none
 #		set LOG_FILE /dev/null
 #	fi
 #fi
-#
+
 #if ver hwcmp CRAZYFLIE AEROCORE2
 #then
 #	# AEROCORE2 shouldn't have an sd card and CF2 may optionally have an sd card.
@@ -608,8 +623,8 @@ set VEHICLE_TYPE                none
 ## End of autostart.
 #fi
 #
-## There is no further script processing, so we can free some RAM
-## XXX potentially unset all script variables.
+# There is no further script processing, so we can free some RAM
+# XXX potentially unset all script variables.
 #unset AUX_MODE
 #unset DATAMAN_OPT
 #unset FAILSAFE

@@ -39,12 +39,7 @@
 
 #pragma once
 
-#if defined(PX4_I2C_MPU6050_ADDR) || \
-	defined(PX4_I2C_MPU6000_ADDR) || \
-	defined(PX4_I2C_ICM_20608_G_ADDR)
-#  define USE_I2C
-#endif
-
+#define USE_I2C
 
 #define DIR_READ			0x80
 #define DIR_WRITE			0x00

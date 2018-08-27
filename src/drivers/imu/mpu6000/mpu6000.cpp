@@ -686,7 +686,8 @@ MPU6000::init()
 	_gyro_scale.z_scale  = 1.0f;
 
 	// set software low pass filter for controllers
-	param_t accel_cut_ph = param_find("IMU_ACCEL_CUTOFF");
+	param_t accel_cut_ph = 30;
+	//param_t accel_cut_ph = param_find("IMU_ACCEL_CUTOFF");
 	float accel_cut = MPU6000_ACCEL_DEFAULT_DRIVER_FILTER_FREQ;
 
 	if (accel_cut_ph != PARAM_INVALID && param_get(accel_cut_ph, &accel_cut) == PX4_OK) {
@@ -700,7 +701,8 @@ MPU6000::init()
 		PX4_ERR("IMU_ACCEL_CUTOFF param invalid");
 	}
 
-	param_t gyro_cut_ph = param_find("IMU_GYRO_CUTOFF");
+	//param_t gyro_cut_ph = param_find("IMU_GYRO_CUTOFF");
+	param_t gyro_cut_ph = 100;
 	float gyro_cut = MPU6000_GYRO_DEFAULT_DRIVER_FILTER_FREQ;
 
 	if (gyro_cut_ph != PARAM_INVALID && param_get(gyro_cut_ph, &gyro_cut) == PX4_OK) {
@@ -2292,7 +2294,8 @@ start_bus(struct mpu6000_bus_option &bus, enum Rotation rotation, int range, int
 
 	if (interface->init() != OK) {
 		delete interface;
-		warnx("no device on bus #%u (SPI%u)", (unsigned)bus.busid, (unsigned)bus.busnum);
+		//warnx("no device on bus #%u (SPI%u)", (unsigned)bus.busid, (unsigned)bus.busnum);
+		warnx("no device on bus #%u (I2C%u)", (unsigned)bus.busid, (unsigned)bus.busnum);
 		return false;
 	}
 

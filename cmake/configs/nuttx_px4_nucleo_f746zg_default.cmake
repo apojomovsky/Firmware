@@ -1,13 +1,89 @@
 
 set(BOARD px4-nucleo-f746zg CACHE string "" FORCE)
 
-#add_definitions(-DPARAM_NO_ORB)
+set(target_definitions MEMORY_CONSTRAINED_SYSTEM)
+
+set(config_uavcan_num_ifaces 2)
 
 px4_nuttx_configure(HWCLASS m7 CONFIG nsh ROMFS y ROMFSROOT px4fmu_common)
 
-#set(config_uavcan_num_ifaces 2)
-
 set(config_module_list
+#	#
+#	# Board support modules
+#	#
+#	drivers/barometer
+#	drivers/differential_pressure
+#	drivers/gps
+#	drivers/magnetometer/hmc5883
+#	drivers/imu/mpu6000
+#	drivers/px4fmu
+#	drivers/rgbled_pwm
+#	drivers/stm32
+#	drivers/stm32/adc
+#	drivers/stm32/tone_alarm
+#	drivers/tap_esc
+#	drivers/vmount
+#	modules/sensors
+#
+#	#
+#	# System commands
+#	#
+#	systemcmds/bl_update
+#	systemcmds/led_control
+#	systemcmds/mixer
+#	systemcmds/param
+#	systemcmds/perf
+#	systemcmds/pwm
+#	systemcmds/hardfault_log
+#	systemcmds/motor_test
+#	systemcmds/reboot
+#	systemcmds/top
+#	systemcmds/config
+#	systemcmds/nshterm
+#	systemcmds/mtd
+#	systemcmds/dumpfile
+#	systemcmds/ver
+#	systemcmds/topic_listener
+#	systemcmds/tune_control
+#
+#	#
+#	# General system control
+#	#
+#	modules/commander
+#	modules/load_mon
+#	modules/navigator
+#	modules/mavlink
+#	modules/land_detector
+#
+#	#
+#	# Estimation modules (EKF/ SO3 / other filters)
+#	#
+#	modules/ekf2
+#
+#	#
+#	# Vehicle Control
+#	#
+#	modules/fw_pos_control_l1
+#	modules/fw_att_control
+#	modules/mc_att_control
+#	modules/mc_pos_control
+#	modules/vtol_att_control
+#
+#	#
+#	# Logging
+#	#
+#	modules/logger
+#
+#	#
+#	# Library modules
+#	#
+#	modules/dataman
+#
+#	examples/px4_simple_app
+#
+#)
+
+
 #	#
 #	# Board support modules
 #	#
@@ -31,18 +107,18 @@ set(config_module_list
 #	drivers/oreoled
 #	drivers/pwm_input
 #	drivers/pwm_out_sim
-#	drivers/px4flow
-#	drivers/px4fmu
-#	drivers/px4io
-#	drivers/rgbled
+	drivers/px4flow
+	drivers/px4fmu
+	drivers/px4io
+	drivers/rgbled
 #	# Enable the line below to put the three leds into PWM RGB mode
-#	#drivers/rgbled_pwm
+	#drivers/rgbled_pwm
 	drivers/stm32
 	drivers/stm32/adc
-#	drivers/stm32/tone_alarm
+	drivers/stm32/tone_alarm
 #	drivers/tap_esc
-#	drivers/vmount
-#	modules/sensors
+	drivers/vmount
+	modules/sensors
 #
 #	#
 #	# System commands
@@ -55,17 +131,17 @@ set(config_module_list
 #	systemcmds/led_control
 #	systemcmds/mixer
 #	systemcmds/motor_ramp
-#	systemcmds/mtd
+	systemcmds/mtd
 	systemcmds/nshterm
-#	systemcmds/param
-#	systemcmds/perf
+	systemcmds/param
+	systemcmds/perf
 #	systemcmds/pwm
-#	systemcmds/reboot
+	systemcmds/reboot
 #	systemcmds/sd_bench
-#	systemcmds/top
-#	systemcmds/topic_listener
+	systemcmds/top
+	systemcmds/topic_listener
 #	systemcmds/tune_control
-#	systemcmds/ver
+	systemcmds/ver
 #
 #	#
 #	# Testing
@@ -83,14 +159,14 @@ set(config_module_list
 #	#
 #	# General system control
 #	#
-#	modules/commander
-#	modules/events
-#	modules/gpio_led
+	modules/commander
+	modules/events
+	modules/gpio_led
 #	modules/land_detector
 #	modules/load_mon
-#	modules/mavlink
-#	modules/navigator
-#	modules/uavcan
+	modules/mavlink
+	modules/navigator
+	modules/uavcan
 #	modules/camera_feedback
 #
 #	#
@@ -110,19 +186,19 @@ set(config_module_list
 #	modules/fw_pos_control_l1
 #	modules/gnd_att_control
 #	modules/gnd_pos_control
-#	modules/mc_att_control
-#	modules/mc_pos_control
-#	modules/vtol_att_control
+	modules/mc_att_control
+	modules/mc_pos_control
+	modules/vtol_att_control
 #
 #	#
 #	# Logging
 #	#
-#	modules/logger
+	modules/logger
 #
 #	#
 #	# Library modules
 #	#
-#	modules/dataman
+	modules/dataman
 #
 #	#
 #	# OBC challenge
@@ -157,5 +233,5 @@ set(config_module_list
 #	#examples/fixedwing_control
 #
 #	# Hardware test
-#   examples/hwtest
+   examples/hwtest
 )
